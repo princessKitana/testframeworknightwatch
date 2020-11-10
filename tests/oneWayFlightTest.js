@@ -1,10 +1,9 @@
 module.exports = {
     '@tags': ['unitedAirlines'],
     'United Airlines - One Way flight': function (browser) {
-        var myJson = [];
+        var finalJson = [];
         var flightObject = {};
         var length = 0;
-        var table;
 
         browser
             .windowMaximize()
@@ -46,10 +45,9 @@ module.exports = {
 
             .elements('css selector', '#flight-result-list-revised > li', function (elementsCount) {
                 length = elementsCount.value.length;
-                table = elementsCount.valueOf()
             })
 
-            //TODO collect and print json
+            //TODO collect json correctly
             .perform(function () {
                     console.log(length);
                     for (var i = 1; i <= length; i++) {
@@ -89,11 +87,11 @@ module.exports = {
                             result5.value.map(function (element5) {
                                 browser.elementIdAttribute(element5.ELEMENT, 'innerText', function (price) {
                                     flightObject.price = price.value;
-                                    myJson.push(flightObject);
-                                    myJson = myJson.filter(function (v) {
+                                    finalJson.push(flightObject);
+                                    finalJson = finalJson.filter(function (v) {
                                         return v.price != 'Not available';
                                     });
-                                    console.log(JSON.parse(JSON.stringify(myJson).replace(/\\n/g, ' ')));
+                                    console.log(JSON.parse(JSON.stringify(finalJson).replace(/\\n/g, ' ')));
                                 })
                             })
                         });

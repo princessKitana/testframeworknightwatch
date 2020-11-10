@@ -14,8 +14,6 @@
     "url": "git@github.com:princessKitana/testframeworknightwatch.git"
   },
   "author": "Daina Drezdere",
-  "license": "MIT",
-
   "homepage": "https://github.com/princessKitana/testframeworknightwatch#readme",
   "devDependencies": {
     "chromedriver": "^2.50.0",
